@@ -22,7 +22,12 @@ const MainPage = () => {
     }
 
     useEffect(() => {
-        fetch(`${ URL }/main`)
+        fetch(`${ URL }/main`,{
+            method: "GET",
+            mode: "cors",
+            headers: { "Content-Type": 'application/json',
+                "Access-Control-Allow-Origin": "https://server-node-js-production.up.railway.app",}
+        })
             .then(response => response.json())
             .then(json => setUsers(json));
 
@@ -56,6 +61,7 @@ const MainPage = () => {
                 body: JSON.stringify(data),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
+                    "Access-Control-Allow-Origin": "https://server-node-js-production.up.railway.app",
                 },
             })
                 .then((response) => {

@@ -30,12 +30,14 @@ const Login = () => {
             setIsLoading(true);
             await fetch(`${ URL }/login`, {
                 method: "POST",
+                mode: "cors",
                 body: JSON.stringify({
                     email: loginForm.email,
                     password: loginForm.password,
                 }),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
+                    "Access-Control-Allow-Origin": "https://server-node-js-production.up.railway.app",
                 },
             })
                 .then((response) => {
